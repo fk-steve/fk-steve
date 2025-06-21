@@ -1,0 +1,715 @@
+/* Basic Resets and Variables */
+:root {
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #cccccc;
+    --button-bg-color: #007bff; /* A nice blue for plumbing */
+    --button-text-color: #ffffff;
+    --navbar-bg-color: rgba(0, 0, 0, 0.6); /* Slightly darker for better contrast */
+    --overlay-color: rgba(0, 0, 0, 0.65); /* More prominent overlay */
+    --accent-color: #00bfff; /* Lighter blue for accents/hovers */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--primary-text-color);
+    background-color: #333; /* Fallback */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--navbar-bg-color);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 28px; /* Slightly larger logo */
+    font-weight: 700;
+    color: var(--primary-text-color);
+    letter-spacing: 1px; /* A bit of spacing for style */
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar nav ul li {
+    margin-left: 35px; /* More spacing */
+}
+
+.navbar nav ul li .nav-link { /* Targeting the class for animation */
+    color: var(--primary-text-color);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative; /* Needed for the underline animation */
+    padding-bottom: 5px; /* Space for the underline */
+}
+
+/* Navbar Link Hover Animation (Underline Effect) */
+.navbar nav ul li .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-out; /* Smooth animation */
+}
+
+.navbar nav ul li .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Placeholder plumbing background image. Replace with a high-quality one! */
+    background: url('images/9.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+    z-index: 1;
+}
+
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px; /* Wider content area */
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.8em; /* Slightly adjusted size */
+    margin-bottom: 25px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--primary-text-color);
+    /* Subtle text shadow for pop */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.3em; /* Slightly larger paragraph */
+    margin-bottom: 40px; /* More space before button */
+    color: var(--secondary-text-color);
+    max-width: 700px; /* Control paragraph width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-primary {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    padding: 18px 35px; /* Larger button */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded */
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700; /* Bolder text */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added transform for animation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Initial shadow */
+}
+
+/* Button Hover Animation (Slight Scale & Shadow) */
+.btn-primary:hover {
+    background-color: var(--accent-color); /* Change color on hover */
+    transform: translateY(-3px); /* Move up slightly */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow */
+}
+
+/* Basic Responsiveness */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3em;
+    }
+    .hero p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .navbar nav ul li {
+        margin-left: 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .btn-primary {
+        padding: 15px 30px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 24px;
+    }
+    .hero h1 {
+        font-size: 2em;
+    }
+    .hero p {
+        font-size: 0.9em;
+    }
+}
+
+/* ... (Your existing CSS code above this) ... */
+
+
+/* Services Section */
+.services-section {
+    background-color: #f8f8f8; /* Light gray background, similar to the image */
+    padding: 80px 0; /* Vertical padding */
+    text-align: center;
+}
+
+.services-section .section-title {
+    font-size: 2.5em; /* Matching the image's title size */
+    color: #333; /* Darker text for readability on light background */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.services-section .section-description {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 50px; /* Space between description and cards */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between cards */
+    max-width: 1000px; /* Limit grid width */
+    margin: 0 auto; /* Center the grid */
+    padding: 0 20px; /* Padding for smaller screens */
+}
+
+.service-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover effect */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative; /* For the overlay effect */
+    overflow: hidden; /* Ensures overlay doesn't spill */
+}
+
+/* Hover effect on cards */
+.service-card:hover {
+    transform: translateY(-8px); /* Lift effect */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+}
+
+/* Overlay effect on card hover */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 123, 255, 0.0); /* Transparent blue from --button-bg-color */
+    transition: background-color 0.3s ease;
+    z-index: 1; /* Below content */
+    border-radius: 8px;
+}
+
+.service-card:hover::before {
+    background-color: rgba(0, 123, 255, 0.1); /* Slight blue overlay on hover */
+}
+
+
+.service-icon {
+    width: 120px; /* Size of the circular image */
+    height: 120px;
+    border-radius: 50%; /* Makes it circular */
+    overflow: hidden; /* Ensures image stays within circle */
+    margin-bottom: 25px;
+    background-color: #e0e0e0; /* Fallback for no image or loading */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(0, 123, 255, 0.2); /* Light blue border */
+}
+
+.service-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the circular area */
+    display: block; /* Removes extra space below image */
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+    position: relative; /* For z-index to be above overlay */
+    z-index: 2;
+}
+
+.service-card p {
+    font-size: 1em;
+    color: #777;
+    line-height: 1.5;
+    position: relative; /* For z-index to be above overlay */
+    z-index: 2;
+}
+
+
+/* Adjustments for responsive layout */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 60px 0;
+    }
+
+    .services-section .section-title {
+        font-size: 2em;
+    }
+
+    .services-section .section-description {
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+    }
+
+    .service-card {
+        padding: 25px;
+    }
+
+    .service-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+        font-size: 1.3em;
+    }
+
+    .service-card p {
+        font-size: 0.9em;
+    }
+}
+
+
+/* ... (Your existing CSS code above this) ... */
+
+/* About Us Section */
+.about-us-section {
+    background-color: #f8f8f8; /* Light gray background, matching the image */
+    padding: 80px 0; /* Vertical padding */
+    text-align: center;
+}
+
+.about-us-section .container {
+    max-width: 900px; /* Narrower container for better readability, as in the image */
+}
+
+.about-us-section .about-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.about-us-section .about-description {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.about-content {
+    text-align: left; /* Content aligned left, as in the image */
+}
+
+.about-subsection {
+    margin-bottom: 40px; /* Space between subsections */
+}
+
+.about-subsection h3 {
+    font-size: 1.8em; /* Title for each subsection */
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+    /* Optional: Add a line below headings, similar to the image's subtle separation */
+    /* border-bottom: 1px solid #eee; */
+    /* padding-bottom: 5px; */
+}
+
+.about-subsection p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.7; /* Improved readability */
+    margin-bottom: 15px; /* Space between paragraphs */
+}
+
+.about-subsection ul {
+    list-style: disc; /* Bullet points for the team */
+    margin-left: 25px; /* Indent bullets */
+    color: #555;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.about-subsection ul li {
+    margin-bottom: 8px;
+}
+
+.about-subsection ul li strong {
+    color: #333;
+}
+
+
+/* Responsive adjustments for About Us section */
+@media (max-width: 992px) {
+    .about-us-section .container {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us-section {
+        padding: 60px 0;
+    }
+
+    .about-us-section .about-title {
+        font-size: 2em;
+    }
+
+    .about-us-section .about-description {
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+
+    .about-subsection h3 {
+        font-size: 1.5em;
+    }
+
+    .about-subsection p,
+    .about-subsection ul {
+        font-size: 0.95em;
+    }
+
+    .about-us-section .container {
+        padding: 0 15px; /* More padding on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-subsection h3 {
+        font-size: 1.3em;
+    }
+
+    .about-subsection p,
+    .about-subsection ul {
+        font-size: 0.9em;
+    }
+
+    .about-subsection ul {
+        margin-left: 20px;
+    }
+}
+
+/* ... (Your existing CSS code above this) ... */
+
+/* Contact Us Section */
+.contact-us-section {
+    background-color: #f8f8f8; /* Light gray background, matching the image */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact-us-section .container {
+    max-width: 900px; /* Consistent with About Us section width */
+}
+
+.contact-us-section .contact-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.contact-us-section .contact-description {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.contact-content-wrapper {
+    display: flex;
+    gap: 40px; /* Space between info and form */
+    text-align: left; /* Align content inside to left */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center items when wrapped */
+}
+
+.contact-info {
+    flex: 1; /* Allows it to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+    padding-right: 20px; /* Spacing from form */
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: flex-start; /* Align icon and text at the top */
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1em;
+}
+
+.contact-info .info-item i {
+    color: var(--button-bg-color); /* Blue icon color */
+    margin-right: 15px;
+    font-size: 1.2em;
+    width: 25px; /* Fixed width for icons for alignment */
+    text-align: center;
+    padding-top: 2px; /* Slight adjustment for visual alignment */
+}
+
+.contact-info .info-item p {
+    margin: 0; /* Remove default paragraph margin */
+    line-height: 1.5;
+}
+
+.contact-form-container {
+    flex: 1; /* Allows it to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Similar shadow to service cards */
+}
+
+.contact-form-container .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form-container input[type="text"],
+.contact-form-container input[type="email"],
+.contact-form-container textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* For animation */
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+    border-color: var(--button-bg-color); /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Light blue glow on focus */
+}
+
+.contact-form-container textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+.btn-send-message {
+    background-color: #333; /* Dark gray, matching the image button */
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Allows padding and margin to work correctly */
+    width: auto; /* Make button fit content */
+}
+
+.btn-send-message:hover {
+    background-color: #555; /* Slightly lighter gray on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+/* Footer style update to match image */
+.main-footer {
+    background-color: #333; /* Dark background, similar to logo bar */
+    color: var(--primary-text-color);
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+.main-footer p {
+    margin: 0;
+    color: var(--secondary-text-color);
+}
+
+.main-footer .footer-nav a {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.main-footer .footer-nav a:hover {
+    color: var(--primary-text-color);
+}
+
+
+/* Responsive adjustments for Contact Us section */
+@media (max-width: 768px) {
+    .contact-us-section {
+        padding: 60px 0;
+    }
+
+    .contact-us-section .contact-title {
+        font-size: 2em;
+    }
+
+    .contact-us-section .contact-description {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+
+    .contact-content-wrapper {
+        flex-direction: column; /* Stack info and form vertically */
+        gap: 30px;
+    }
+
+    .contact-info {
+        padding-right: 0;
+        text-align: center; /* Center items on small screens */
+    }
+
+    .contact-info .info-item {
+        justify-content: center; /* Center icons and text */
+        flex-wrap: wrap; /* Allow text to wrap if long */
+    }
+
+    .contact-info .info-item i {
+        margin-right: 10px; /* Reduce margin */
+        margin-bottom: 5px; /* Add some space below icon if text wraps */
+    }
+
+    .contact-form-container {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-us-section .contact-title {
+        font-size: 1.8em;
+    }
+
+    .contact-info .info-item {
+        font-size: 0.95em;
+    }
+
+    .contact-form-container input,
+    .contact-form-container textarea {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+
+    .btn-send-message {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    .main-footer .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .main-footer .footer-nav a {
+        margin: 0 10px; /* Smaller margin for footer nav */
+    }
+}
+
